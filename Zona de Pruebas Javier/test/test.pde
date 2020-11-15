@@ -1,3 +1,8 @@
+//Originally made and coded by Logan Fitzgerald using Processing3
+
+// ArrayList<Star> stars = new ArrayList<Star>();
+// int frequency = 4; //frequency of star | LOWER == MORE STARS
+
 Ship playerShip;
 
 ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
