@@ -12,7 +12,7 @@ class Obstaculos {
 
   void drawObstaculos() {
     fill(150);
-    stroke(150);
+    stroke(15);
     ellipse(x, y, size, size);
     y+=vy;
   }
