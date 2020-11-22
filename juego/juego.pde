@@ -13,6 +13,8 @@ int segundos = 0;
 
 EndScene end;
 PShape s;
+
+PImage b;
 //equis de
 void setup() {
   // fullScreen(P2D);
@@ -21,20 +23,21 @@ void setup() {
   //frameRate(100);
   //points = 0;
   s = loadShape("data/calle.svg");
+  b = loadImage("data/bicicleta.png");
   //noStroke();
 }
 
 void draw() {
-  //delay(1000);
   if (end != null) {
     end.drawEndScene();
   } else if (10 > segundos) { 
     shape(s, 0, 0, 800, 800);
     drawObstaculos();
-    fill(255, 0, 0);
+    //fill(255, 0, 0);
     stroke(255);
     playerShip.drawShip();
     checkCollision();
+    
   }
 }
 
