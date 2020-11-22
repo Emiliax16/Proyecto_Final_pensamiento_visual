@@ -2,7 +2,7 @@ Ship playerShip;
 
 ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
 int obstaculosFrequency = 10; // LOWER == MORE OBSTACULOS
-
+int segundos = 0;
 //OPTION ONE -- A single bullet at a time
 //Bullet bullets;
 
@@ -21,38 +21,23 @@ void setup() {
   //frameRate(100);
   //points = 0;
   s = loadShape("data/calle.svg");
+  //noStroke();
 }
 
 void draw() {
-
+  //delay(1000);
   if (end != null) {
     end.drawEndScene();
-  } else { 
+  } else if (10 > segundos) { 
     shape(s, 0, 0, 800, 800);
-    //drawStar();
-
     drawObstaculos();
     fill(255, 0, 0);
     stroke(255);
-    //drawBullet();
     playerShip.drawShip();
-
-    //stroke(255);
-    //fill(255);
-    //textSize(30);
-    //text("Points: " + points, 50, 50);
-
     checkCollision();
   }
 }
 
-//void drawBullet() {
-//  for (int i = 0; i<bullets.size(); i++) {
-    //i is every number from 0 to the size of the bullet array
-    //println(bullets.get(i).x);
-//    bullets.get(i).drawBullet();
-//  }
-//}
 
 void checkCollision() {
   for (int i = 0; i < obstaculos.size(); i++) {
@@ -60,19 +45,6 @@ void checkCollision() {
     if (a.checkCollision(playerShip) == true) {
       end = new EndScene();
     }
-    //for (int b = 0; b < bullets.size(); b++) {
-      //Bullet bullet = bullets.get(b);
-      //if (a.checkCollision(bullet) == true) {
-        //set up removal of bullet and astroid
-
-        //points++;
-
-        //obstaculos.remove(a);
-        //bullets.remove(bullet);
-        //i--;
-        //b--;
-     // }
-   // }
   }
 }
 
@@ -87,24 +59,11 @@ void drawObstaculos() {
     if (currentObstaculos.y > height + currentObstaculos.size) {
       obstaculos.remove(currentObstaculos);
       i--;
-      //points--;
     }
   }
-  //prinln(obstaculos.size());
 }
 
-// void drawStar() {
-//   strokeWeight(8);
-//   stroke(255);
-//   if (frameCount % frequency == 0) {
-//     Star myStar = new Star();
-//     stars.add(myStar);
-//   }
-//   for (int i = 0; i<stars.size(); i++) {
-//     Star currentStar = stars.get(i);
-//     currentStar.drawStar();
-//   }
-// }
+
 
 void keyPressed() {
   if (key == CODED) {
@@ -117,17 +76,7 @@ void keyPressed() {
     } else if (keyCode == RIGHT) {
       playerShip.rightPressed = true;
     }
-  } else if (key == ' ') {
-    Bullet b = new Bullet(playerShip);
-    //bullets.add(b);
-
-    //if (bullet == null) {
-    //bullet = new Bullet(playShip);
-    //}
-
-    //Assume we're in the right location
-    //bullet = null;
-  }
+  } 
 }
 
 void keyReleased() {
@@ -149,10 +98,7 @@ void mousePressed() {
 }
 
 void resetGame() {
-  // stars.clear();
-  //bullets.clear();
   obstaculos.clear();
   playerShip = new Ship();
   end = null;
-  //points = 0;
 }
