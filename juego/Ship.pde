@@ -1,8 +1,10 @@
+
 class Ship {
   float x, y, vx, vy;
   boolean upPressed, downPressed, leftPressed, rightPressed;
   
   int speed = 6; //speed of ship
+  
   
   Ship() {
     this.x = width/2;
@@ -41,6 +43,7 @@ class Ship {
     
     if (x-10 > width) x = -9;
     
-    triangle(x, y-17.32, x-10, y, x+10, y);
+    
+    image(b, x, y, 50, 90);
   }
 }
