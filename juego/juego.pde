@@ -1,7 +1,7 @@
 Ship playerShip;
 
-ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
-int asteroidFrequency = 60; // LOWER == MORE ASTEROIDS
+ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
+int asteroidFrequency = 60; // LOWER == MORE OBSTACULOS
 
 //OPTION ONE -- A single bullet at a time
 //Bullet bullets;
@@ -31,7 +31,7 @@ void draw() {
     shape(s, 0, 0, 800, 800);
     //drawStar();
 
-    drawAsteroid();
+    drawObstaculos();
     fill(255, 0, 0);
     stroke(255);
     //drawBullet();
@@ -55,8 +55,8 @@ void drawBullet() {
 }
 
 void checkCollision() {
-  for (int i = 0; i < asteroids.size(); i++) {
-    Asteroid a = asteroids.get(i);
+  for (int i = 0; i < obstaculos.size(); i++) {
+    Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
       end = new EndScene(points);
     }
@@ -67,7 +67,7 @@ void checkCollision() {
 
         points++;
 
-        asteroids.remove(a);
+        obstaculos.remove(a);
         bullets.remove(bullet);
         i--;
         b--;
@@ -77,20 +77,20 @@ void checkCollision() {
 }
 
 
-void drawAsteroid() {
+void drawObstaculos() {
   if (frameCount % asteroidFrequency == 0) {
-    asteroids.add(new Asteroid(random(150, 250)));
+    obstaculos.add(new Obstaculos(random(150, 250)));
   }
-  for (int i = 0; i<asteroids.size(); i++) {
-    Asteroid currentAsteroid = asteroids.get(i);
-    currentAsteroid.drawAsteroid();
-    if (currentAsteroid.y > height + currentAsteroid.size) {
-      asteroids.remove(currentAsteroid);
+  for (int i = 0; i<obstaculos.size(); i++) {
+    Obstaculos currentObstaculos = obstaculos.get(i);
+    currentObstaculos.drawObstaculos();
+    if (currentObstaculos.y > height + currentObstaculos.size) {
+      obstaculos.remove(currentObstaculos);
       i--;
       points--;
     }
   }
-  //prinln(asteroids.size());
+  //prinln(obstaculos.size());
 }
 
 // void drawStar() {
@@ -151,7 +151,7 @@ void mousePressed() {
 void resetGame() {
   // stars.clear();
   bullets.clear();
-  asteroids.clear();
+  obstaculos.clear();
   playerShip = new Ship();
   end = null;
   points = 0;
