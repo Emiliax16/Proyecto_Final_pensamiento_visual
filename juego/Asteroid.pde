@@ -8,6 +8,7 @@ class Obstaculos {
     this.x = random(width);
     this.y = -size;
   }
+  //equis de
 
   void drawObstaculos() {
     fill(150);
