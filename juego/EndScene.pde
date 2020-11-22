@@ -3,7 +3,7 @@ class EndScene {
   int buttonX, buttonY, buttonW, buttonH;
 
 
-  EndScene(int points) {
+  EndScene() {
     this.gameOverText = "Fin del Juego";
     this.buttonText = "Reintentar";
     //this.pointsText = "Your final Score is " + points;
