@@ -13,7 +13,7 @@ int obstaculosFrequency = 10; // LOWER == MORE OBSTACULOS
 
 EndScene end;
 PShape s;
-
+//equis de
 void setup() {
   // fullScreen(P2D);
   size(800, 800);
