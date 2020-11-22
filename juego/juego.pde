@@ -1,15 +1,15 @@
 Ship playerShip;
 
 ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
-int asteroidFrequency = 60; // LOWER == MORE OBSTACULOS
+int obstaculosFrequency = 10; // LOWER == MORE OBSTACULOS
 
 //OPTION ONE -- A single bullet at a time
 //Bullet bullets;
 
 //OPTION TWO -- Multiple bullets at a time
-ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+//ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
-int points;
+//int points;
 
 EndScene end;
 PShape s;
@@ -18,8 +18,8 @@ void setup() {
   // fullScreen(P2D);
   size(800, 800);
   playerShip = new Ship();
-  // frameRate(300);
-  points = 0;
+  //frameRate(100);
+  //points = 0;
   s = loadShape("data/calle.svg");
 }
 
@@ -46,40 +46,40 @@ void draw() {
   }
 }
 
-void drawBullet() {
-  for (int i = 0; i<bullets.size(); i++) {
+//void drawBullet() {
+//  for (int i = 0; i<bullets.size(); i++) {
     //i is every number from 0 to the size of the bullet array
     //println(bullets.get(i).x);
-    bullets.get(i).drawBullet();
-  }
-}
+//    bullets.get(i).drawBullet();
+//  }
+//}
 
 void checkCollision() {
   for (int i = 0; i < obstaculos.size(); i++) {
     Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
-      end = new EndScene(points);
+      end = new EndScene();
     }
-    for (int b = 0; b < bullets.size(); b++) {
-      Bullet bullet = bullets.get(b);
-      if (a.checkCollision(bullet) == true) {
+    //for (int b = 0; b < bullets.size(); b++) {
+      //Bullet bullet = bullets.get(b);
+      //if (a.checkCollision(bullet) == true) {
         //set up removal of bullet and astroid
 
-        points++;
+        //points++;
 
-        obstaculos.remove(a);
-        bullets.remove(bullet);
-        i--;
-        b--;
-      }
-    }
+        //obstaculos.remove(a);
+        //bullets.remove(bullet);
+        //i--;
+        //b--;
+     // }
+   // }
   }
 }
 
 
 void drawObstaculos() {
-  if (frameCount % asteroidFrequency == 0) {
-    obstaculos.add(new Obstaculos(random(150, 250)));
+  if (frameCount % obstaculosFrequency == 0) {
+    obstaculos.add(new Obstaculos(random(40, 100)));
   }
   for (int i = 0; i<obstaculos.size(); i++) {
     Obstaculos currentObstaculos = obstaculos.get(i);
@@ -87,7 +87,7 @@ void drawObstaculos() {
     if (currentObstaculos.y > height + currentObstaculos.size) {
       obstaculos.remove(currentObstaculos);
       i--;
-      points--;
+      //points--;
     }
   }
   //prinln(obstaculos.size());
@@ -119,7 +119,7 @@ void keyPressed() {
     }
   } else if (key == ' ') {
     Bullet b = new Bullet(playerShip);
-    bullets.add(b);
+    //bullets.add(b);
 
     //if (bullet == null) {
     //bullet = new Bullet(playShip);
@@ -150,9 +150,9 @@ void mousePressed() {
 
 void resetGame() {
   // stars.clear();
-  bullets.clear();
+  //bullets.clear();
   obstaculos.clear();
   playerShip = new Ship();
   end = null;
-  points = 0;
+  //points = 0;
 }
