@@ -1,15 +1,15 @@
-class Asteroid {
+class Obstaculos {
   float size, x, y;
 
   int vy = 5; //speed of asteroid
 
-  Asteroid(float size) {
+  Obstaculos(float size) {
     this.size = size;
     this.x = random(width);
     this.y = -size;
   }
 
-  void drawAsteroid() {
+  void drawObstaculos() {
     fill(150);
     stroke(150);
     ellipse(x, y, size, size);
