@@ -1,7 +1,7 @@
 Ship playerShip;
 
 ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
-int obstaculosFrequency = 10; // LOWER == MORE OBSTACULOS
+int obstaculosFrequency = 120; // LOWER == MORE OBSTACULOS
 int segundos = 0;
 //OPTION ONE -- A single bullet at a time
 //Bullet bullets;
@@ -54,7 +54,7 @@ void checkCollision() {
 
 void drawObstaculos() {
   if (frameCount % obstaculosFrequency == 0) {
-    obstaculos.add(new Obstaculos(random(40, 100)));
+    obstaculos.add(new Obstaculos(random(30, 60)));
   }
   for (int i = 0; i<obstaculos.size(); i++) {
     Obstaculos currentObstaculos = obstaculos.get(i);
