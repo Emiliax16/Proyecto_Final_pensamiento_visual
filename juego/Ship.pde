@@ -43,7 +43,7 @@ class Ship {
     
     if (x-10 > width) x = -9;
     
-    
-    image(b, x, y, 50, 90);
+    //triangle(x, y-17.32, x-10, y, x+10, y); //Triangulo original
+    image(b, x-25, y-30, 50, 90);
   }
 }
