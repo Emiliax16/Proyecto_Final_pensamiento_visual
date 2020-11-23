@@ -1,3 +1,6 @@
+import processing.sound.*;
+SoundFile mp31, mp32;
+
 Ship playerShip;
 
 ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
@@ -10,6 +13,8 @@ EndScene end;
 PShape s;
 
 PImage b;
+
+
 void setup() {
   // fullScreen(P2D);
   size(800, 800);
@@ -20,6 +25,9 @@ void setup() {
   b = loadImage("data/bicicleta.png");
   //noStroke();
   start = new StartScene();
+  
+  mp31 = new SoundFile(this, "bodybag.mp3");
+  mp32 = new SoundFile(this, "professional.mp3");
 }
 
 void draw() {
@@ -97,11 +105,13 @@ void mousePressed() {
     ran1 = 60;
     ran2 = 110;
     start = null;
+    mp31.play();
   } else if (start != null && start.mouseEnBoton2() == true) {
     ran1 = 30;
     ran2 = 60;
     obstaculosFrequency = 140;
     start = null;
+    mp32.play();
   } else if (end != null && end.mouseOverButton() == true) {
     resetGame();
   }
