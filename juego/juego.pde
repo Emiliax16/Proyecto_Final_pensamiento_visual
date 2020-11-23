@@ -3,19 +3,13 @@ Ship playerShip;
 ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
 int obstaculosFrequency = 120; // LOWER == MORE OBSTACULOS
 int segundos = 0;
-//OPTION ONE -- A single bullet at a time
-//Bullet bullets;
+int ran1, ran2;
 
-//OPTION TWO -- Multiple bullets at a time
-//ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-
-//int points;
-
+StartScene start;
 EndScene end;
 PShape s;
 
 PImage b;
-//equis de
 void setup() {
   // fullScreen(P2D);
   size(800, 800);
@@ -25,10 +19,13 @@ void setup() {
   s = loadShape("data/calle.svg");
   b = loadImage("data/bicicleta.png");
   //noStroke();
+  start = new StartScene();
 }
 
 void draw() {
-  if (end != null) {
+  if (start != null) {
+    start.drawStartScene();
+  } else if (end != null) {
     end.drawEndScene();
   } else if (10 > segundos) { 
     shape(s, 0, 0, 800, 800);
@@ -54,7 +51,7 @@ void checkCollision() {
 
 void drawObstaculos() {
   if (frameCount % obstaculosFrequency == 0) {
-    obstaculos.add(new Obstaculos(random(30, 60)));
+    obstaculos.add(new Obstaculos(random(ran1, ran2)));
   }
   for (int i = 0; i<obstaculos.size(); i++) {
     Obstaculos currentObstaculos = obstaculos.get(i);
@@ -71,9 +68,9 @@ void drawObstaculos() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
-      playerShip.upPressed = true;
+      //playerShip.upPressed = true;
     } else if (keyCode == DOWN) {
-      playerShip.downPressed = true;
+      //playerShip.downPressed = true;
     } else if (keyCode == LEFT) {
       playerShip.leftPressed = true;
     } else if (keyCode == RIGHT) {
@@ -84,9 +81,9 @@ void keyPressed() {
 
 void keyReleased() {
   if (keyCode == UP) {
-    playerShip.upPressed = false;
+    //playerShip.upPressed = false;
   } else if (keyCode == DOWN) {
-    playerShip.downPressed = false;
+    //playerShip.downPressed = false;
   } else if (keyCode == LEFT) {
     playerShip.leftPressed = false;
   } else if (keyCode == RIGHT) {
@@ -95,7 +92,17 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  if (end != null && end.mouseOverButton() == true) {
+  if (start != null && start.mouseEnBoton1() == true) {
+    obstaculosFrequency = 20;
+    ran1 = 60;
+    ran2 = 110;
+    start = null;
+  } else if (start != null && start.mouseEnBoton2() == true) {
+    ran1 = 30;
+    ran2 = 60;
+    obstaculosFrequency = 140;
+    start = null;
+  } else if (end != null && end.mouseOverButton() == true) {
     resetGame();
   }
 }
@@ -103,5 +110,6 @@ void mousePressed() {
 void resetGame() {
   obstaculos.clear();
   playerShip = new Ship();
+  start = new StartScene();
   end = null;
 }
