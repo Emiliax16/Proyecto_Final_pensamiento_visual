@@ -6,7 +6,7 @@ class StartScene {
   StartScene() {
     this.startText = "Realidades en la";
     this.startText2 = "Educación";
-    this.button1Text = "Pepito Villalobos";
+    this.button1Text = "Sofía Leon";
     this.button2Text = "Juanita Pérez";
     this.buttonW = 300;
     this.buttonH = 75;
@@ -39,7 +39,7 @@ class StartScene {
     stroke(200);
     rect(buttonX, buttonY, buttonW, buttonH);
     fill(200);
-    text(button1Text, buttonX+25, buttonY+50);
+    text(button1Text, buttonX+70, buttonY+50);
     
     //BUTTON2
     fill(0);
