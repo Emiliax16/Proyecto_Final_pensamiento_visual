@@ -26,7 +26,7 @@ void setup() {
   //noStroke();
   start = new StartScene();
   
-  mp31 = new SoundFile(this, "bodybag.mp3");
+  mp31 = new SoundFile(this, "relato_sofia.mpeg");
   mp32 = new SoundFile(this, "professional.mp3");
 }
 
@@ -35,6 +35,7 @@ void draw() {
     start.drawStartScene();
   } else if (end != null) {
     end.drawEndScene();
+    mp31.stop();
   } else if (10 > segundos) { 
     shape(s, 0, 0, 800, 800);
     drawObstaculos();
