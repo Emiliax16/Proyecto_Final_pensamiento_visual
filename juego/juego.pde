@@ -26,7 +26,7 @@ void setup() {
   //noStroke();
   start = new StartScene();
   
-  mp31 = new SoundFile(this, "relato_sofia.mpeg");
+  mp31 = new SoundFile(this, "relato_sofia.mp3");
   mp32 = new SoundFile(this, "professional.mp3");
 }
 
