@@ -27,7 +27,7 @@ void setup() {
   start = new StartScene();
   
   mp31 = new SoundFile(this, "relato_sofia.mp3");
-  mp32 = new SoundFile(this, "professional.mp3");
+  mp32 = new SoundFile(this, "temp_file_2.mp3");
 }
 
 void draw() {
