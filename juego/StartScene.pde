@@ -7,7 +7,7 @@ class StartScene {
     this.startText = "Realidades en la";
     this.startText2 = "Educación";
     this.button1Text = "Sofía Leon";
-    this.button2Text = "Juanita Pérez";
+    this.button2Text = "Matías Barra";
     this.buttonW = 300;
     this.buttonH = 75;
     this.buttonX = width/2 - this.buttonW/2-200;
