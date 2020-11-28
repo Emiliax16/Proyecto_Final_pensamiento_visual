@@ -20,6 +20,7 @@ PShape s;
 PImage b;
 PImage p;
 PImage a;
+PImage g;
 
 boolean j1 = true;
 
@@ -33,6 +34,7 @@ void setup() {
   b = loadImage("data/bicicleta.png");
   p = loadImage("data/piedra.png");
   a = loadImage("data/arbol.png");
+  g = loadImage("data/grieta2.png");
   //noStroke();
   start = new StartScene();
 
@@ -83,6 +85,7 @@ void checkCollision() {
     Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
       chocar = 1;
+      image(g, a.x - 10, a.y, 90, 90);
     }
   }
 }
