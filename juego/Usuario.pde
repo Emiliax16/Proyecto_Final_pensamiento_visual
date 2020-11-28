@@ -45,7 +45,7 @@ class Ship {
     
     //triangle(x, y-17.32, x-10, y, x+10, y); //Triangulo original
     //image(b, x-25, y-30, 50, 90);
-    triangle(x, y-17.32*z, x-10*z, y, x+10*z, y); //Triangulo original
+    //triangle(x, y-17.32*z, x-10*z, y, x+10*z, y); //Triangulo original
     image(b, x-25*2, y-32*2, 50*2, 90*2);
   }
 }
