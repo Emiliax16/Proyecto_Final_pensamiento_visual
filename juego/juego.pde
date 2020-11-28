@@ -7,12 +7,23 @@ ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos>();
 int obstaculosFrequency = 120; // LOWER == MORE OBSTACULOS
 int segundos = 0;
 int ran1, ran2;
+int pos_x_arbol = 730;
+int pos_y_arbol = -175;
+int ancho_arbol = 140;
+int alto_arbol = 175;
+int opacidad = 0;
+int chocar;
+
 
 StartScene start;
 EndScene end;
 PShape s;
 
 PImage b;
+
+PImage p;
+
+PImage a;
 
 
 void setup() {
@@ -23,6 +34,8 @@ void setup() {
   //points = 0;
   s = loadShape("data/calle.svg");
   b = loadImage("data/bicicleta.png");
+  p = loadImage("data/piedra.png");
+  a = loadImage("data/arbol.png");
   //noStroke();
   start = new StartScene();
   
@@ -39,9 +52,15 @@ void draw() {
   } else if (10 > segundos) { 
     shape(s, 0, 0, 800, 800);
     drawObstaculos();
+    drawArbol();
     //fill(255, 0, 0);
     stroke(255);
     playerShip.drawShip();
+    drawOpacidad();
+    if (chocar == 1){
+      opacidad += 2;
+   }
+
     checkCollision();
     
   }
@@ -49,10 +68,11 @@ void draw() {
 
 
 void checkCollision() {
+  chocar = 0;
   for (int i = 0; i < obstaculos.size(); i++) {
     Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
-      end = new EndScene();
+      chocar = 1;
     }
   }
 }
@@ -71,6 +91,20 @@ void drawObstaculos() {
     }
   }
 }
+
+void drawArbol() {
+  image(a, pos_x_arbol, pos_y_arbol, ancho_arbol, alto_arbol);
+  pos_y_arbol = pos_y_arbol + 2;
+  if (pos_y_arbol >= height + 150) {
+    pos_y_arbol = -175;
+  }
+}
+
+void drawOpacidad() {
+  fill(0,0,0,opacidad);
+  rect(0,0,width,height);
+}
+
 
 
 
