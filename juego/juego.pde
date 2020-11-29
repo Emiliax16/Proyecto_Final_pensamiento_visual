@@ -6,9 +6,9 @@ int obstaculosFrequency = 120; // LOWER == MORE OBSTACULOS
 int segs_dsps = 0;
 int ran1, ran2;
 int pos_x_arbol = 730;
-int pos_y_arbol = -175;
-int ancho_arbol = 140;
-int alto_arbol = 175;
+int pos_y_arbol = -150;
+int ancho_arbol = 120;
+int alto_arbol = 150;
 int opacidad = 0;
 int opacidad2 = 0;
 int chocar;
@@ -32,8 +32,8 @@ void setup() {
   //points = 0;
   s = loadShape("data/calle.svg");
   b = loadImage("data/bicicleta.png");
-  p = loadImage("data/piedra.png");
-  a = loadImage("data/arbol.png");
+  p = loadImage("data/rocapng2.png");
+  a = loadImage("data/arbolpng.png");
   g = loadImage("data/grieta2.png");
   //noStroke();
   start = new StartScene();
@@ -107,8 +107,8 @@ void drawObstaculos() {
 void drawArbol() {
   image(a, pos_x_arbol, pos_y_arbol, ancho_arbol, alto_arbol);
   pos_y_arbol = pos_y_arbol + 2;
-  if (pos_y_arbol >= height + 150) {
-    pos_y_arbol = -175;
+  if (pos_y_arbol >= height + 120) {
+    pos_y_arbol = -150;
   }
 }
 
