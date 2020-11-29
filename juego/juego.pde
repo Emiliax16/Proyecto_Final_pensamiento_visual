@@ -38,9 +38,11 @@ void setup() {
   //noStroke();
   start = new StartScene();
 
-  mp31 = new SoundFile(this, "relato_sofia.mp3");
+  //mp31 = new SoundFile(this, "relato_sofia.mp3");
+  mp31 = new SoundFile(this, "professional.mp3");
   mp31.amp(volumen);
-  mp32 = new SoundFile(this, "temp_file_2.mp3");
+  //mp32 = new SoundFile(this, "temp_file_2.mp3");
+  mp32 = new SoundFile(this, "professional.mp3");
   mp32.amp(volumen);
 }
 
@@ -53,8 +55,8 @@ void draw() {
     mp32.stop();
   } else {
     shape(s, 0, 0, 800, 800);
-    drawObstaculos();
     drawArbol();
+    drawObstaculos();
     //fill(255, 0, 0);
     stroke(255);
     playerShip.drawShip();
@@ -85,7 +87,7 @@ void checkCollision() {
     Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
       chocar = 1;
-      image(g, a.x - 10, a.y, 90, 90);
+      image(g, a.x-50 , a.y-10, 90, 90);
     }
   }
 }
@@ -167,6 +169,9 @@ void mousePressed() {
 }
 
 void resetGame() {
+  j1 = true;
+  opacidad = 0;
+  opacidad2 = 0;
   obstaculos.clear();
   playerShip = new Ship();
   start = new StartScene();
