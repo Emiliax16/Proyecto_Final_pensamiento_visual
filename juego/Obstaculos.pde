@@ -13,7 +13,7 @@ class Obstaculos {
   void drawObstaculos() {
     fill(150);
     stroke(15);
-    image(p, x, y, size, size);
+    image(p, x-size/2, y-size/2, size, size);
     y+=vy;
   }
 
@@ -22,7 +22,7 @@ class Obstaculos {
       Ship playerShip = (Ship) other;
       float apothem = 10 * tan(60);
       float distance = dist(x, y, playerShip.x, playerShip.y-apothem);
-      if (distance < size/2 + apothem + 5) {
+      if (distance < size/2 + apothem + 10) {
         //background(255, 0, 0);
         //fill(255, 0, 0, 100);
         //rect(0, 0, width, height);
