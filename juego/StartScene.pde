@@ -19,7 +19,7 @@ class StartScene {
   void drawStartScene() {
     //Overlay
     fill(#488599);
-    image(fondo_portada,0,0,width, height);
+    image(fondo_portada, 0, 0, width, height);
     rect(buttonX, buttonY, buttonW, buttonH);
     rect(button2X, button2Y, buttonW, buttonH);
 
@@ -50,6 +50,7 @@ class StartScene {
   }
 
   boolean mouseEnBoton1() {
+    jug = 1;
     return ((mouseX > buttonX 
       && mouseX < buttonX + buttonW
       && mouseY > buttonY
@@ -57,6 +58,7 @@ class StartScene {
       ));
   }
   boolean mouseEnBoton2() {
+    jug = 2;
     return ((mouseX > button2X 
       && mouseX < button2X + buttonW
       && mouseY > button2Y

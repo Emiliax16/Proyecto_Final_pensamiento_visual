@@ -46,6 +46,11 @@ class Ship {
     //triangle(x, y-17.32, x-10, y, x+10, y); //Triangulo original
     //image(b, x-25, y-30, 50, 90);
     //triangle(x, y-17.32*z, x-10*z, y, x+10*z, y); //Triangulo original
-    image(b, x-25*2, y-32*2, 50*2, 90*2);
+    if (jug == 1) {
+      image(b, x-25*2, y-32*2, 50*2, 90*2);
+    } else if (jug == 2) {
+      image(b2, x-25*2, y-32*2, 50*2, 90*2);
+    }
+    
   }
 }

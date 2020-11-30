@@ -1,7 +1,7 @@
-import processing.sound.* ;
+import processing.sound.*;
 SoundFile mp31, mp32;
 Ship playerShip;
-ArrayList < Obstaculos > obstaculos = new ArrayList < Obstaculos > ();
+ArrayList<Obstaculos> obstaculos = new ArrayList<Obstaculos> ();
 int obstaculosFrequency = 120; // LOWER == MORE OBSTACULOS
 int segs_dsps = 0;
 int ran1, ran2;
@@ -17,13 +17,16 @@ float j1_tiempo;
 StartScene start;
 EndScene end;
 PImage s;
+PImage s2;
 PImage b;
+PImage b2;
 PImage p;
 PImage a;
 PImage g;
 PImage fondo_portada;
 PImage fondo_final;
 boolean j1 = true;
+int jug;
 
 void setup() {
   // fullScreen(P2D);
@@ -31,14 +34,16 @@ void setup() {
   playerShip = new Ship();
   //frameRate(100);
   //points = 0;
-  s = loadImage("data/calle2.png");
-  b = loadImage("data/bicicleta.png");
-  p = loadImage("data/rocapng2.png");
-  a = loadImage("data/arbolpng.png");
-  g = loadImage("data/grieta2.png");
-  fondo_portada = loadImage("data/fondo_bici.jpg");
+  s = loadImage("calle2.png"); //FONDO CAMPO!!!
+  s2 = loadImage("fondito_tierra.png"); //FONDO CIUDAD!!!
+  b = loadImage("bicicleta_m.png");
+  b2 = loadImage("bicicleta_h.png");
+  p = loadImage("rocapng2.png");
+  a = loadImage("arbolpng.png");
+  g = loadImage("grieta2.png");
+  fondo_portada = loadImage("fondo_bici.jpg");
   //imagen recuperada de https://viajesenbicicletas.com/intente-ir-a-trabajar-en-bicicleta-todos-los-dias-durante-una-semana-y-esto-es-lo-que-sucedio/
-  fondo_final = loadImage("data/fondo_sala.jpg");
+  fondo_final = loadImage("fondo_sala.jpg");
   //imagen recuperada de https://www.diarioconcepcion.cl/ciudad/2020/06/20/sigue-la-incertidumbre-por-el-retorno-a-clases-presenciales.html
   //noStroke();
   start = new StartScene();
@@ -58,7 +63,7 @@ void draw() {
     end.drawEndScene();
     mp31.stop();
     mp32.stop();
-  } else {
+  } else if (jug == 1) {
     image(s, 0, 0, 800, 800);
     drawArbol();
     drawObstaculos();
@@ -73,12 +78,37 @@ void draw() {
     checkCollision();
     if ((mp31.isPlaying() || mp32.isPlaying()) == false) {
       if (j1) {
-        segs_dsps = millis()/1000;
+        segs_dsps = millis() / 1000;
         j1 = false;
       };
       opacidad2 += 2;
       drawBlanco();
-      if ((millis()/1000)-segs_dsps > 3) {
+      if ((millis() / 1000) - segs_dsps > 3) {
+        end = new EndScene();
+      }
+    }
+
+  } else if (jug == 2) {
+    image(s2, 0, 0, 800, 800);
+    //drawArbol();                    //INSERTAR AQUÍ LA FUNCIÓN PARA DIBUJAR LAS LÍNEAS
+    drawObstaculos();
+    //fill(255, 0, 0);
+    stroke(255);
+    playerShip.drawShip();
+    drawOpacidad();
+    if (chocar == 1) {
+      opacidad += 2;
+    }
+
+    checkCollision();
+    if ((mp31.isPlaying() || mp32.isPlaying()) == false) {
+      if (j1) {
+        segs_dsps = millis() / 1000;
+        j1 = false;
+      };
+      opacidad2 += 2;
+      drawBlanco();
+      if ((millis() / 1000) - segs_dsps > 3) {
         end = new EndScene();
       }
     }
@@ -88,11 +118,11 @@ void draw() {
 
 void checkCollision() {
   chocar = 0;
-  for (int i = 0; i < obstaculos.size(); i++) {
+  for (int i = 0; i<obstaculos.size(); i++) {
     Obstaculos a = obstaculos.get(i);
     if (a.checkCollision(playerShip) == true) {
       chocar = 1;
-      image(g, a.x-50 , a.y-10, 90, 90);
+      image(g, a.x - 50, a.y - 10, 90, 90);
     }
   }
 }
@@ -101,7 +131,7 @@ void drawObstaculos() {
   if (frameCount % obstaculosFrequency == 0) {
     obstaculos.add(new Obstaculos(random(ran1, ran2)));
   }
-  for (int i = 0; i < obstaculos.size(); i++) {
+  for (int i = 0; i<obstaculos.size(); i++) {
     Obstaculos currentObstaculos = obstaculos.get(i);
     currentObstaculos.drawObstaculos();
     if (currentObstaculos.y > height + currentObstaculos.size) {

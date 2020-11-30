@@ -33,7 +33,7 @@ class EndScene {
     stroke(200);
     rect(buttonX, buttonY, buttonW, buttonH);
     fill(200);
-    text(buttonText, buttonX+45, buttonY+47);
+    text(buttonText, buttonX+35, buttonY+50);
     
   }
 
