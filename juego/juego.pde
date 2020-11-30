@@ -16,12 +16,13 @@ float volumen = 0.7;
 float j1_tiempo;
 StartScene start;
 EndScene end;
-PShape s;
+PImage s;
 PImage b;
 PImage p;
 PImage a;
 PImage g;
-
+PImage fondo_portada;
+PImage fondo_final;
 boolean j1 = true;
 
 void setup() {
@@ -30,11 +31,15 @@ void setup() {
   playerShip = new Ship();
   //frameRate(100);
   //points = 0;
-  s = loadShape("data/calle.svg");
+  s = loadImage("data/calle2.png");
   b = loadImage("data/bicicleta.png");
   p = loadImage("data/rocapng2.png");
   a = loadImage("data/arbolpng.png");
   g = loadImage("data/grieta2.png");
+  fondo_portada = loadImage("data/fondo_bici.jpg");
+  //imagen recuperada de https://viajesenbicicletas.com/intente-ir-a-trabajar-en-bicicleta-todos-los-dias-durante-una-semana-y-esto-es-lo-que-sucedio/
+  fondo_final = loadImage("data/fondo_sala.jpg");
+  //imagen recuperada de https://www.diarioconcepcion.cl/ciudad/2020/06/20/sigue-la-incertidumbre-por-el-retorno-a-clases-presenciales.html
   //noStroke();
   start = new StartScene();
 
@@ -54,7 +59,7 @@ void draw() {
     mp31.stop();
     mp32.stop();
   } else {
-    shape(s, 0, 0, 800, 800);
+    image(s, 0, 0, 800, 800);
     drawArbol();
     drawObstaculos();
     //fill(255, 0, 0);

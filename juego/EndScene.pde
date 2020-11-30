@@ -8,27 +8,28 @@ class EndScene {
     this.buttonText = "Volver al Menú";
     //this.pointsText = "Your final Score is " + points;
     this.pointsText = "";
-    this.buttonW = 300;
+    this.buttonW = 350;
     this.buttonH = 70;
     this.buttonX = width/2 - this.buttonW/2;
-    this.buttonY = height/2 - this.buttonH/2;
+    this.buttonY = height - this.buttonH*2;
   }
 
   void drawEndScene() {
     //OVERLAY
     fill(#34495E);
-    rect(0, 0, width, height);
+    image(fondo_final,0,0,width, height);
     rect(buttonX, buttonY, buttonW, buttonH);
+    rect(-5,100,width+5,140); 
 
     //TEXT
-    stroke(255);
-    fill(255);
-    textSize(30);
-    text(this.gameOverText, 120, 150);
+    stroke(0);
+    fill(225);
+    textSize(40);
+    text(this.gameOverText, 30, 150);
 
 
     //BUTTON
-    fill(0);
+    fill(#34495E);
     stroke(200);
     rect(buttonX, buttonY, buttonW, buttonH);
     fill(200);

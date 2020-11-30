@@ -19,13 +19,13 @@ class StartScene {
   void drawStartScene() {
     //Overlay
     fill(#488599);
-    rect(0, 0, width, height);
+    image(fondo_portada,0,0,width, height);
     rect(buttonX, buttonY, buttonW, buttonH);
     rect(button2X, button2Y, buttonW, buttonH);
 
     //Título
     stroke(255);
-    fill(255);
+    fill(0);
     textSize(60);
     text(this.startText, width/5, 150);
     text(this.startText2, width/3, 250);
