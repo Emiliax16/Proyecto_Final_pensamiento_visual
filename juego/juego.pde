@@ -12,7 +12,8 @@ int alto_arbol = 150;
 int opacidad = 0;
 int opacidad2 = 0;
 int chocar;
-float volumen = 0.7;
+float volumen1 = 0.7;
+float volumen2 = 1;
 float j1_tiempo;
 StartScene start;
 EndScene end;
@@ -70,12 +71,12 @@ void setup() {
   //noStroke();
   start = new StartScene();
 
-  //mp31 = new SoundFile(this, "relato_sofia.mp3");
-  mp31 = new SoundFile(this, "professional.mp3");
-  mp31.amp(volumen);
+  mp31 = new SoundFile(this, "relato_sofia.mp3");
+  //mp31 = new SoundFile(this, "professional.mp3");
+  mp31.amp(volumen1);
   mp32 = new SoundFile(this, "audio_matias_barra.wav");
   //mp32 = new SoundFile(this, "professional.mp3");
-  mp32.amp(volumen);
+  mp32.amp(volumen2);
 }
 
 void draw() {
