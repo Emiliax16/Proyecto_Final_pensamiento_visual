@@ -27,6 +27,28 @@ PImage fondo_portada;
 PImage fondo_final;
 boolean j1 = true;
 int jug;
+int pos_x_linea = 250;
+int pos_y_linea = -50;
+int pos_y_linea1 = -50;
+int pos_y_linea2 = -50;
+int pos_y_linea3 = -50;
+int pos_y_linea4 = -50;
+int pos_y_linea5 = -50;
+int pos_y_linea6 = -50;
+int pos_y_linea7 = -50;
+int pos_y_linea8 = -50;
+int pos_x_linea1 = 550;
+int pos_y_linea0 = -50;
+int pos_y_linea11 = -50;
+int pos_y_linea22 = -50;
+int pos_y_linea33 = -50;
+int pos_y_linea44 = -50;
+int pos_y_linea55 = -50;
+int pos_y_linea66 = -50;
+int pos_y_linea77 = -50;
+int pos_y_linea88 = -50;
+int ancho_linea = 5;
+int alto_linea = 50;
 
 void setup() {
   // fullScreen(P2D);
@@ -34,8 +56,8 @@ void setup() {
   playerShip = new Ship();
   //frameRate(100);
   //points = 0;
-  s = loadImage("calle2.png"); //FONDO CAMPO!!!
-  s2 = loadImage("fondito_tierra.png"); //FONDO CIUDAD!!!
+  s = loadImage("fondito_tierra.png"); //FONDO CAMPO!!!
+  s2 = loadImage("calle2.png"); //FONDO CIUDAD!!!
   b = loadImage("bicicleta_m.png");
   b2 = loadImage("bicicleta_h.png");
   p = loadImage("rocapng2.png");
@@ -51,8 +73,8 @@ void setup() {
   //mp31 = new SoundFile(this, "relato_sofia.mp3");
   mp31 = new SoundFile(this, "professional.mp3");
   mp31.amp(volumen);
-  //mp32 = new SoundFile(this, "temp_file_2.mp3");
-  mp32 = new SoundFile(this, "professional.mp3");
+  mp32 = new SoundFile(this, "audio_matias_barra.wav");
+  //mp32 = new SoundFile(this, "professional.mp3");
   mp32.amp(volumen);
 }
 
@@ -90,7 +112,7 @@ void draw() {
 
   } else if (jug == 2) {
     image(s2, 0, 0, 800, 800);
-    //drawArbol();                    //INSERTAR AQUÍ LA FUNCIÓN PARA DIBUJAR LAS LÍNEAS
+    drawLineas();                    //INSERTAR AQUÍ LA FUNCIÓN PARA DIBUJAR LAS LÍNEAS
     drawObstaculos();
     //fill(255, 0, 0);
     stroke(255);
@@ -211,4 +233,98 @@ void resetGame() {
   playerShip = new Ship();
   start = new StartScene();
   end = null;
+}
+
+
+
+void drawLineas() {
+  rect(pos_x_linea, pos_y_linea, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea1 - 100, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea2 - 200, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea3 - 300, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea4 - 400, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea5 - 500, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea6 - 600, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea7 - 700, ancho_linea, alto_linea);
+  rect(pos_x_linea, pos_y_linea8 - 800, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea0, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea11 - 100, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea22 - 200, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea33 - 300, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea44 - 400, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea55 - 500, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea66 - 600, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea77 - 700, ancho_linea, alto_linea);
+  rect(pos_x_linea1, pos_y_linea88 - 800, ancho_linea, alto_linea);
+  pos_y_linea = pos_y_linea + 3;
+  pos_y_linea1 = pos_y_linea1 + 3;
+  pos_y_linea2 = pos_y_linea2 + 3;
+  pos_y_linea3 = pos_y_linea3 + 3;
+  pos_y_linea4 = pos_y_linea4 + 3;
+  pos_y_linea5 = pos_y_linea5 + 3;
+  pos_y_linea6 = pos_y_linea6 + 3;
+  pos_y_linea7 = pos_y_linea7 + 3;
+  pos_y_linea8 = pos_y_linea8 + 3;
+  pos_y_linea0 = pos_y_linea0 + 3;
+  pos_y_linea11 = pos_y_linea11 + 3;
+  pos_y_linea22 = pos_y_linea22 + 3;
+  pos_y_linea33 = pos_y_linea33 + 3;
+  pos_y_linea44 = pos_y_linea44 + 3;
+  pos_y_linea55 = pos_y_linea55 + 3;
+  pos_y_linea66 = pos_y_linea66 + 3;
+  pos_y_linea77 = pos_y_linea77 + 3;
+  pos_y_linea88 = pos_y_linea88 + 3;
+  if (pos_y_linea >= height + alto_linea) {
+    pos_y_linea = - alto_linea;
+  }
+  if (pos_y_linea1 >= height + alto_linea + 100){
+    pos_y_linea1 = -alto_linea ;    
+  } if (pos_y_linea2 >= height + alto_linea + 200){
+    pos_y_linea2 = -alto_linea;    
+  }
+  if (pos_y_linea3 >= height + alto_linea + 300){
+    pos_y_linea3 = -alto_linea;    
+  }
+  if (pos_y_linea4 >= height + alto_linea + 400){
+    pos_y_linea4 = -alto_linea;    
+  }
+  if (pos_y_linea5 >= height + alto_linea + 500){
+    pos_y_linea5 = -alto_linea ;    
+  }
+  if (pos_y_linea6 >= height + alto_linea + 600){
+    pos_y_linea6 = -alto_linea ;    
+  }
+  if (pos_y_linea7 >= height + alto_linea + 700){
+    pos_y_linea7 = -alto_linea;    
+  }
+  if (pos_y_linea8 >= height + alto_linea + 800){
+    pos_y_linea8 = -alto_linea ;    
+  }
+   if (pos_y_linea0 >= height + alto_linea) {
+    pos_y_linea0 = - alto_linea;
+  }
+  if (pos_y_linea11 >= height + alto_linea + 100){
+    pos_y_linea11 = -alto_linea ;    
+  }
+  if (pos_y_linea22 >= height + alto_linea + 200){
+    pos_y_linea22 = -alto_linea;    
+  }
+  if (pos_y_linea33 >= height + alto_linea + 300){
+    pos_y_linea33 = -alto_linea;    
+  }
+  if (pos_y_linea44 >= height + alto_linea + 400){
+    pos_y_linea44 = -alto_linea;    
+  }
+  if (pos_y_linea55 >= height + alto_linea + 500){
+    pos_y_linea55 = -alto_linea ;    
+  }
+  if (pos_y_linea66 >= height + alto_linea + 600){
+    pos_y_linea66 = -alto_linea ;    
+  }
+  if (pos_y_linea77 >= height + alto_linea + 700){
+    pos_y_linea77 = -alto_linea;    
+  }
+  if (pos_y_linea88 >= height + alto_linea + 800){
+    pos_y_linea88 = -alto_linea ;    
+  }
 }
